@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CalendarIcon, DollarSign, Plus } from "lucide-react";
+import { CalendarIcon, IndianRupee, Plus } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface Expense {
@@ -68,7 +68,7 @@ export function ExpenseForm({ onAddExpense }: ExpenseFormProps) {
     
     toast({
       title: "Expense Added!",
-      description: `$${amount} expense recorded successfully.`,
+      description: `₹${parseFloat(amount).toLocaleString('en-IN')} expense recorded successfully.`,
       variant: "default"
     });
   };
@@ -101,7 +101,7 @@ export function ExpenseForm({ onAddExpense }: ExpenseFormProps) {
             <div className="space-y-2">
               <Label htmlFor="amount" className="text-foreground">Amount *</Label>
               <div className="relative">
-                <DollarSign className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                <IndianRupee className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                 <Input
                   id="amount"
                   type="number"

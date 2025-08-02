@@ -54,50 +54,59 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-primary/5 to-accent/10">
-        <div className="absolute inset-0 opacity-30">
+      <div className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5">
+        <div className="absolute inset-0 opacity-20">
           <img 
             src={heroImage} 
             alt="Financial Dashboard" 
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="relative container mx-auto px-4 py-16">
+        <div className="absolute inset-0 bg-gradient-to-br from-background/90 to-background/80"></div>
+        <div className="relative container mx-auto px-4 py-20">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="flex justify-center mb-6">
-              <div className="p-4 bg-primary/10 rounded-full">
-                <Wallet className="h-12 w-12 text-primary" />
+            <div className="flex justify-center mb-8">
+              <div className="p-6 bg-gradient-to-br from-primary to-secondary rounded-full glow-effect hover-lift">
+                <Wallet className="h-16 w-16 text-white" />
               </div>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-              Personal Expense Tracker
+            <h1 className="text-5xl md:text-7xl font-bold font-poppins mb-6">
+              <span className="gradient-text">Personal Expense</span>
+              <br />
+              <span className="text-foreground">Tracker</span>
             </h1>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto font-inter leading-relaxed">
               Take control of your finances with our comprehensive expense tracking system. 
-              Monitor spending, set budgets, and visualize your financial patterns.
+              Monitor spending, set budgets, and visualize your financial patterns in Indian Rupees.
             </p>
             
             {/* Quick Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-              <Card className="bg-card/80 backdrop-blur-sm border-border">
-                <CardContent className="p-6 text-center">
-                  <Calculator className="h-8 w-8 text-primary mx-auto mb-2" />
-                  <p className="text-2xl font-bold text-foreground">${monthlyTotal.toFixed(2)}</p>
-                  <p className="text-sm text-muted-foreground">This Month</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <Card className="glass-card hover-lift glow-effect">
+                <CardContent className="p-8 text-center">
+                  <div className="bg-gradient-to-br from-primary to-primary/80 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Calculator className="h-8 w-8 text-white" />
+                  </div>
+                  <p className="text-3xl font-bold font-poppins text-foreground mb-2">₹{monthlyTotal.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</p>
+                  <p className="text-sm text-muted-foreground font-medium">This Month</p>
                 </CardContent>
               </Card>
-              <Card className="bg-card/80 backdrop-blur-sm border-border">
-                <CardContent className="p-6 text-center">
-                  <TrendingUp className="h-8 w-8 text-primary mx-auto mb-2" />
-                  <p className="text-2xl font-bold text-foreground">{expenses.length}</p>
-                  <p className="text-sm text-muted-foreground">Total Transactions</p>
+              <Card className="glass-card hover-lift glow-effect">
+                <CardContent className="p-8 text-center">
+                  <div className="bg-gradient-to-br from-secondary to-secondary/80 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <TrendingUp className="h-8 w-8 text-white" />
+                  </div>
+                  <p className="text-3xl font-bold font-poppins text-foreground mb-2">{expenses.length}</p>
+                  <p className="text-sm text-muted-foreground font-medium">Total Transactions</p>
                 </CardContent>
               </Card>
-              <Card className="bg-card/80 backdrop-blur-sm border-border">
-                <CardContent className="p-6 text-center">
-                  <PieChart className="h-8 w-8 text-primary mx-auto mb-2" />
-                  <p className="text-2xl font-bold text-foreground">${totalExpenses.toFixed(2)}</p>
-                  <p className="text-sm text-muted-foreground">All Time Total</p>
+              <Card className="glass-card hover-lift glow-effect">
+                <CardContent className="p-8 text-center">
+                  <div className="bg-gradient-to-br from-financial-blue to-financial-blue/80 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <PieChart className="h-8 w-8 text-white" />
+                  </div>
+                  <p className="text-3xl font-bold font-poppins text-foreground mb-2">₹{totalExpenses.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</p>
+                  <p className="text-sm text-muted-foreground font-medium">All Time Total</p>
                 </CardContent>
               </Card>
             </div>
@@ -106,47 +115,53 @@ const Index = () => {
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-12">
         <div className="max-w-7xl mx-auto">
-          <Tabs defaultValue="add-expense" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-4 bg-muted">
-              <TabsTrigger value="add-expense" className="flex items-center gap-2">
+          <Tabs defaultValue="add-expense" className="space-y-8">
+            <TabsList className="grid w-full grid-cols-4 bg-gradient-to-r from-card to-muted border border-border/50 shadow-lg">
+              <TabsTrigger value="add-expense" className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all duration-300">
                 <Calculator className="h-4 w-4" />
-                <span className="hidden sm:inline">Add Expense</span>
+                <span className="hidden sm:inline font-medium">Add Expense</span>
               </TabsTrigger>
-              <TabsTrigger value="budget" className="flex items-center gap-2">
+              <TabsTrigger value="budget" className="flex items-center gap-2 data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground transition-all duration-300">
                 <Wallet className="h-4 w-4" />
-                <span className="hidden sm:inline">Budget</span>
+                <span className="hidden sm:inline font-medium">Budget</span>
               </TabsTrigger>
-              <TabsTrigger value="analytics" className="flex items-center gap-2">
+              <TabsTrigger value="analytics" className="flex items-center gap-2 data-[state=active]:bg-financial-blue data-[state=active]:text-white transition-all duration-300">
                 <PieChart className="h-4 w-4" />
-                <span className="hidden sm:inline">Analytics</span>
+                <span className="hidden sm:inline font-medium">Analytics</span>
               </TabsTrigger>
-              <TabsTrigger value="history" className="flex items-center gap-2">
+              <TabsTrigger value="history" className="flex items-center gap-2 data-[state=active]:bg-accent data-[state=active]:text-accent-foreground transition-all duration-300">
                 <List className="h-4 w-4" />
-                <span className="hidden sm:inline">History</span>
+                <span className="hidden sm:inline font-medium">History</span>
               </TabsTrigger>
             </TabsList>
 
             <TabsContent value="add-expense" className="space-y-6">
               <div className="grid gap-6 lg:grid-cols-2">
                 <ExpenseForm onAddExpense={handleAddExpense} />
-                <div className="space-y-4">
-                  <Card className="bg-gradient-to-r from-primary/10 to-accent/10 border-border">
-                    <CardContent className="p-6">
-                      <h3 className="text-lg font-semibold text-foreground mb-4">
+                <div className="space-y-6">
+                  <Card className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 border-border shadow-lg hover-lift">
+                    <CardContent className="p-8">
+                      <h3 className="text-xl font-bold font-poppins text-foreground mb-6">
                         {currentMonth} Summary
                       </h3>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <p className="text-sm text-muted-foreground">Monthly Spending</p>
-                          <p className="text-2xl font-bold text-foreground">
-                            ${monthlyTotal.toFixed(2)}
+                      <div className="grid grid-cols-2 gap-6">
+                        <div className="text-center">
+                          <div className="bg-gradient-to-br from-primary to-primary/80 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <Calculator className="h-6 w-6 text-white" />
+                          </div>
+                          <p className="text-sm text-muted-foreground font-medium mb-1">Monthly Spending</p>
+                          <p className="text-2xl font-bold font-poppins text-foreground">
+                            ₹{monthlyTotal.toLocaleString('en-IN', { maximumFractionDigits: 0 })}
                           </p>
                         </div>
-                        <div>
-                          <p className="text-sm text-muted-foreground">Transactions</p>
-                          <p className="text-2xl font-bold text-foreground">
+                        <div className="text-center">
+                          <div className="bg-gradient-to-br from-secondary to-secondary/80 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <TrendingUp className="h-6 w-6 text-white" />
+                          </div>
+                          <p className="text-sm text-muted-foreground font-medium mb-1">Transactions</p>
+                          <p className="text-2xl font-bold font-poppins text-foreground">
                             {expenses.filter(e => e.date.startsWith(new Date().toISOString().slice(0, 7))).length}
                           </p>
                         </div>
@@ -155,17 +170,17 @@ const Index = () => {
                   </Card>
                   
                   {expenses.length > 0 && (
-                    <Card className="bg-card border-border">
-                      <CardContent className="p-6">
-                        <h3 className="text-lg font-semibold text-foreground mb-4">Recent Expenses</h3>
-                        <div className="space-y-3">
+                    <Card className="glass-card hover-lift shadow-lg">
+                      <CardContent className="p-8">
+                        <h3 className="text-xl font-bold font-poppins text-foreground mb-6">Recent Expenses</h3>
+                        <div className="space-y-4">
                           {expenses.slice(0, 3).map((expense) => (
-                            <div key={expense.id} className="flex justify-between items-center p-3 rounded-lg bg-accent/20">
+                            <div key={expense.id} className="flex justify-between items-center p-4 rounded-xl bg-gradient-to-r from-accent/10 to-muted/50 border border-border/30 hover:shadow-md transition-all duration-200">
                               <div>
-                                <p className="font-medium text-foreground">{expense.category}</p>
-                                <p className="text-sm text-muted-foreground">{expense.date}</p>
+                                <p className="font-semibold text-foreground font-inter">{expense.category}</p>
+                                <p className="text-sm text-muted-foreground">{new Date(expense.date).toLocaleDateString('en-IN')}</p>
                               </div>
-                              <p className="font-semibold text-foreground">${expense.amount.toFixed(2)}</p>
+                              <p className="font-bold text-lg text-primary">₹{expense.amount.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</p>
                             </div>
                           ))}
                         </div>

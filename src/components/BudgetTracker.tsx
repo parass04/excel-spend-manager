@@ -44,7 +44,7 @@ export function BudgetTracker({ expenses }: BudgetTrackerProps) {
     // Initialize budgets for default categories
     const initialBudgets = defaultCategories.map(category => ({
       category,
-      limit: 500,
+      limit: 8000,
       spent: 0
     }));
     setBudgets(initialBudgets);
@@ -97,7 +97,7 @@ export function BudgetTracker({ expenses }: BudgetTrackerProps) {
     
     toast({
       title: "Budget Updated",
-      description: `${category} budget set to $${newLimit.toFixed(2)}`,
+      description: `${category} budget set to ₹${newLimit.toLocaleString('en-IN')}`,
     });
   };
 
@@ -126,16 +126,16 @@ export function BudgetTracker({ expenses }: BudgetTrackerProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
             <div className="text-center">
               <p className="text-sm text-muted-foreground">Total Budget</p>
-              <p className="text-2xl font-bold text-foreground">${totalBudget.toFixed(2)}</p>
+              <p className="text-2xl font-bold text-foreground">₹{totalBudget.toLocaleString('en-IN')}</p>
             </div>
             <div className="text-center">
               <p className="text-sm text-muted-foreground">Total Spent</p>
-              <p className="text-2xl font-bold text-foreground">${totalSpent.toFixed(2)}</p>
+              <p className="text-2xl font-bold text-foreground">₹{totalSpent.toLocaleString('en-IN')}</p>
             </div>
             <div className="text-center">
               <p className="text-sm text-muted-foreground">Remaining</p>
               <p className={`text-2xl font-bold ${totalSpent > totalBudget ? 'text-destructive' : 'text-success'}`}>
-                ${(totalBudget - totalSpent).toFixed(2)}
+                ₹{(totalBudget - totalSpent).toLocaleString('en-IN')}
               </p>
             </div>
           </div>
@@ -200,7 +200,7 @@ export function BudgetTracker({ expenses }: BudgetTrackerProps) {
                       ) : (
                         <>
                           <span className="text-sm text-muted-foreground">
-                            ${budget.spent.toFixed(2)} / ${budget.limit.toFixed(2)}
+                            ₹{budget.spent.toLocaleString('en-IN')} / ₹{budget.limit.toLocaleString('en-IN')}
                           </span>
                           <Button
                             size="sm"
@@ -217,7 +217,7 @@ export function BudgetTracker({ expenses }: BudgetTrackerProps) {
                   <Progress value={Math.min(percentage, 100)} className="h-2" />
                   <div className="flex justify-between text-xs text-muted-foreground">
                     <span>{percentage.toFixed(1)}% used</span>
-                    <span>${(budget.limit - budget.spent).toFixed(2)} remaining</span>
+                    <span>₹{(budget.limit - budget.spent).toLocaleString('en-IN')} remaining</span>
                   </div>
                 </div>
               );

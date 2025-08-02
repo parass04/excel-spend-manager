@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,26 +10,26 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 248 250 252;
-    --foreground: 218 20% 15%;
+    --background: 0 0% 98%;
+    --foreground: 220 15% 25%;
 
-    --card: 255 255 255;
-    --card-foreground: 218 20% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 25%;
 
-    --popover: 255 255 255;
-    --popover-foreground: 218 20% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 25%;
 
-    --primary: 158 60% 45%;
+    --primary: 22 100% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 218 15% 96%;
-    --secondary-foreground: 218 20% 25%;
+    --secondary: 142 76% 36%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 218 15% 96%;
-    --muted-foreground: 218 15% 45%;
+    --muted: 220 10% 96%;
+    --muted-foreground: 220 10% 45%;
 
-    --accent: 210 100% 96%;
-    --accent-foreground: 210 100% 30%;
+    --accent: 39 100% 96%;
+    --accent-foreground: 39 100% 20%;
 
     --success: 142 76% 36%;
     --success-foreground: 0 0% 100%;
@@ -38,17 +40,19 @@ All colors MUST be HSL.
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 218 15% 88%;
-    --input: 218 15% 94%;
-    --ring: 158 60% 45%;
+    --border: 220 10% 90%;
+    --input: 220 10% 96%;
+    --ring: 22 100% 50%;
 
+    --financial-saffron: 22 100% 50%;
     --financial-green: 142 76% 36%;
     --financial-blue: 210 100% 50%;
-    --financial-gradient: linear-gradient(135deg, hsl(158 60% 45%), hsl(210 100% 50%));
-    --chart-1: 158 60% 45%;
-    --chart-2: 210 100% 50%;
-    --chart-3: 38 92% 50%;
-    --chart-4: 270 95% 75%;
+    --financial-gradient: linear-gradient(135deg, hsl(22 100% 50%), hsl(142 76% 36%));
+    --hero-gradient: linear-gradient(135deg, hsl(22 100% 95%), hsl(142 76% 95%));
+    --chart-1: 22 100% 50%;
+    --chart-2: 142 76% 36%;
+    --chart-3: 210 100% 50%;
+    --chart-4: 270 95% 65%;
     --chart-5: 340 75% 55%;
 
     --radius: 0.5rem;
@@ -115,6 +119,24 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-sm border border-white/20 shadow-lg;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-300 hover:transform hover:scale-105 hover:shadow-xl;
+  }
+  
+  .glow-effect {
+    @apply shadow-lg shadow-primary/20;
   }
 }

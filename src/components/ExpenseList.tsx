@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { Trash2, Search, Download, Calendar, DollarSign } from "lucide-react";
+import { Trash2, Search, Download, Calendar, IndianRupee } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface Expense {
@@ -136,7 +136,7 @@ export function ExpenseList({ expenses, onDeleteExpense }: ExpenseListProps) {
         {filteredAndSortedExpenses.length > 0 && (
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
             <span>{filteredAndSortedExpenses.length} expense(s)</span>
-            <span>Total: ${totalAmount.toFixed(2)}</span>
+            <span>Total: ₹{totalAmount.toLocaleString('en-IN')}</span>
           </div>
         )}
       </CardHeader>
@@ -146,7 +146,7 @@ export function ExpenseList({ expenses, onDeleteExpense }: ExpenseListProps) {
           <div className="text-center py-8 text-muted-foreground">
             {expenses.length === 0 ? (
               <div>
-                <DollarSign className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                <IndianRupee className="h-12 w-12 mx-auto mb-4 opacity-50" />
                 <p>No expenses recorded yet.</p>
                 <p className="text-sm mt-2">Start tracking your spending by adding your first expense!</p>
               </div>
@@ -170,9 +170,9 @@ export function ExpenseList({ expenses, onDeleteExpense }: ExpenseListProps) {
                     </Badge>
                   </div>
                   <div className="flex items-center gap-2">
-                    <DollarSign className="h-4 w-4 text-primary" />
+                    <IndianRupee className="h-4 w-4 text-primary" />
                     <span className="font-semibold text-lg text-foreground">
-                      ${expense.amount.toFixed(2)}
+                      ₹{expense.amount.toLocaleString('en-IN')}
                     </span>
                   </div>
                   {expense.description && (

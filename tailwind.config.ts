@@ -18,6 +18,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'inter': ['Inter', 'sans-serif'],
+				'poppins': ['Poppins', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -61,6 +65,7 @@ export default {
 					foreground: 'hsl(var(--warning-foreground))'
 				},
 				financial: {
+					saffron: 'hsl(var(--financial-saffron))',
 					green: 'hsl(var(--financial-green))',
 					blue: 'hsl(var(--financial-blue))',
 					gradient: 'var(--financial-gradient)'
