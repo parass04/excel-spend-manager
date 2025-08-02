@@ -17,7 +17,27 @@ interface Expense {
 }
 
 const Index = () => {
-  const [expenses, setExpenses] = useState<Expense[]>([]);
+  const [expenses, setExpenses] = useState<Expense[]>([
+    // Current month examples
+    { id: '1', date: '2025-08-01', amount: 1200, category: 'Food & Dining', description: 'Dinner at restaurant with family' },
+    { id: '2', date: '2025-08-02', amount: 850, category: 'Transportation', description: 'Uber rides for the week' },
+    { id: '3', date: '2025-08-03', amount: 2500, category: 'Shopping', description: 'New clothes for office' },
+    { id: '4', date: '2025-08-01', amount: 500, category: 'Entertainment', description: 'Movie tickets and snacks' },
+    { id: '5', date: '2025-08-04', amount: 3200, category: 'Bills & Utilities', description: 'Electricity and internet bill' },
+    { id: '6', date: '2025-08-05', amount: 800, category: 'Food & Dining', description: 'Groceries for home' },
+    { id: '7', date: '2025-08-06', amount: 1500, category: 'Healthcare', description: 'Monthly health checkup' },
+    // Previous month examples
+    { id: '8', date: '2025-07-15', amount: 2200, category: 'Food & Dining', description: 'Birthday celebration dinner' },
+    { id: '9', date: '2025-07-20', amount: 1800, category: 'Transportation', description: 'Auto rickshaw and bus fares' },
+    { id: '10', date: '2025-07-25', amount: 4500, category: 'Shopping', description: 'Home appliances shopping' },
+    { id: '11', date: '2025-07-10', amount: 750, category: 'Entertainment', description: 'Concert tickets' },
+    { id: '12', date: '2025-07-05', amount: 2800, category: 'Bills & Utilities', description: 'Monthly rent payment' },
+    // June examples
+    { id: '13', date: '2025-06-15', amount: 1900, category: 'Food & Dining', description: 'Weekend food delivery orders' },
+    { id: '14', date: '2025-06-20', amount: 1200, category: 'Transportation', description: 'Petrol and parking charges' },
+    { id: '15', date: '2025-06-25', amount: 3500, category: 'Travel', description: 'Weekend trip to Goa' },
+    { id: '16', date: '2025-06-10', amount: 600, category: 'Entertainment', description: 'Gaming subscription and apps' }
+  ]);
 
   // Load expenses from localStorage on component mount
   useEffect(() => {
