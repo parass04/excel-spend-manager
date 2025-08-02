@@ -205,6 +205,11 @@ const Index = () => {
           </Tabs>
         </div>
       </div>
+
+      {/* Footer Credit */}
+      <footer className="text-center py-6 border-t border-border/50">
+        <p className="text-sm text-muted-foreground">Made by Paras Ubale</p>
+      </footer>
     </div>
   );
 };
